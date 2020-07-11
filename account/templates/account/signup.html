@@ -1,0 +1,22 @@
+{% load crispy_forms_tags %}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charsset="utf-8">
+</head>
+<body>
+<form method='POST'>
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type='submit'>Sign up!</button>
+</form>
+<style>
+    #hint_id_username,
+    #hint_id_password1{
+        display: none;
+    }
+</style>
+</body>
+<html>

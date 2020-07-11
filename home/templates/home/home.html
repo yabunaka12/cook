@@ -1,0 +1,14 @@
+{% if user.is_authenticated %}
+        <p>{{ user.get_username }}でログイン中</p>
+        <a href="{% url 'logout' %}">logout</a>
+        {% for stock in stocks %}
+            {% if stock.user_name == request.user %}
+                {{ stock.user_name }}
+                {{ stock.amount}}
+                {{ stock.ingredients}}
+            {% endif %}
+        {% endfor %}
+    {% else %}
+        <p>ログインしていません</p>
+        <a href="{% url 'login' %}">login</a>
+{% endif %}
