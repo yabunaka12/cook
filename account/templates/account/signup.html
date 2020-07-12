@@ -1,22 +1,24 @@
+{% extends 'account/base.html' %}
 {% load crispy_forms_tags %}
+{% load static %}
 
-
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charsset="utf-8">
-</head>
-<body>
-<form method='POST'>
-    {% csrf_token %}
-    {{ form|crispy }}
-    <button type='submit'>Sign up!</button>
-</form>
-<style>
-    #hint_id_username,
-    #hint_id_password1{
-        display: none;
-    }
-</style>
-</body>
-<html>
+{% block title %} Cook 新規登録 {% endblock %}
+{% block mainT %} 新規登録 {% endblock %}
+{% block mainL %}UserID : {{ user.get_username }}{% endblock %}
+{% block auth %}{% endblock %}
+{% block body %}
+<div style='padding-top: 50px;'>
+    <form action="" method="POST">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-body">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                    <button type="submit" class="btn btn-lg btn-primary btn-block" >新規登録</button>
+                    <input type="hidden" name="next" value="{{ next }}" />
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

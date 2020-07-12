@@ -1,2 +1,10 @@
-comprete logout!
-<a href="{% url 'login' %}">login</a>
+{% extends "account/base.html" %}
+{% block title %} Cook ログアウト {% endblock %}
+{% block mainT %} ログアウト {% endblock %}
+{% block mainL %}UserID : {{ user.get_username }}{% endblock %}
+{% block body %}
+    <div style="text-align: center; padding-top: 50px;">
+    <h2 >お疲れ様でした</h2>
+    <a class="nav-link" href="{% url 'login' %}">ログイン</a>
+    </div>
+{% endblock %}

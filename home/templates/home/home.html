@@ -1,14 +1,23 @@
+{% extends 'account/base.html'%}
+{% load static %}
+
+{% block title %} Cook {% endblock %}
+{% block mainT %} トップメニュー {% endblock %}
+{% block mainL %}UserID : {{ user.get_username }}{% endblock %}
+{% block body %}
 {% if user.is_authenticated %}
-        <p>{{ user.get_username }}でログイン中</p>
-        <a href="{% url 'logout' %}">logout</a>
+    <div style="padding-top: 50px; padding-left: 50px;">
+        <h3>{{ user.get_username }}でログイン中</h3>
         {% for stock in stocks %}
             {% if stock.user_name == request.user %}
-                {{ stock.user_name }}
                 {{ stock.amount}}
                 {{ stock.ingredients}}
+                <br/>
             {% endif %}
         {% endfor %}
     {% else %}
         <p>ログインしていません</p>
         <a href="{% url 'login' %}">login</a>
+    </div>
 {% endif %}
+{% endblock %}

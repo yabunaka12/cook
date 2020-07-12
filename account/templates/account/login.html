@@ -1,16 +1,24 @@
+{% extends 'account/base.html' %}
 {% load crispy_forms_tags %}
+{% load static %}
 
-
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charsset="utf-8">
-</head>
-<body>
-    <form method='POST' role="form" action="" class="login-form">
-        {% csrf_token %}
-        {{ form|crispy }}       
-        <button type="submit" class="btn">Log In!</button>
+{% block title %} Cook ログイン {% endblock %}
+{% block mainT %} ログイン {% endblock %}
+{% block mainL %}UserID : {{ user.get_username }}{% endblock %}
+{% block auth %}{% endblock %}
+{% block body %}
+<div style='padding-top: 50px;'>
+    <form action="" method="POST">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-body">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                    <button type="submit" class="btn btn-lg btn-primary btn-block" >ログイン</button>
+                    <input type="hidden" name="next" value="{{ next }}" />
+                </div>
+            </div>
+        </div>
     </form>
-</body>
-<html>
+</div>
+{% endblock %}
